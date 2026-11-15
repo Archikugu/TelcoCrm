@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-class IndividualCustomer : Customer
+public class IndividualCustomer : Customer
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
