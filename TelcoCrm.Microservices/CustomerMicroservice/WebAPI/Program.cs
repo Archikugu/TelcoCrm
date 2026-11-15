@@ -15,7 +15,11 @@ public class Program
         builder.Services.AddOpenApi();
 
         builder.Services.AddDbContext<CustomerDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("CustomerDbConnection")));
+            options.UseNpgsql(builder.Configuration.GetConnectionString("CustomerDbConnection"),
+            npgsql =>
+            {
+                npgsql.MigrationsAssembly(typeof(CustomerDbContext).Assembly.FullName);
+            }).UseSnakeCaseNamingConvention());
 
         var app = builder.Build();
 
